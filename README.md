@@ -1,6 +1,6 @@
 # Designing Self-Aware Multi-Agent AI Systems: A Two-Fold Framework Based on AIBOM and Reflective Architecture
 
-> 📦 The Cognitive Workflow Framework is actively maintained at the repository: [github.com/ncaselli/self-aware-multi-agent-ai](https://github.com/NiccoloCase/cognitive-workflow)
+> 📦 The Cognitive Workflow Framework is actively maintained at the repository: [github.com/ncaselli/cognitive-workflow](https://github.com/NiccoloCase/cognitive-workflow)
 
 **Candidate**: Niccolò Caselli  
 **Supervisor**: Prof. Enrico Vicario  
@@ -12,7 +12,7 @@
 
 ---
 
-📄 Download the full thesis manuscript: [`supplementary-materials/thesis/document.pdf`](./supplementary-materials/thesis/document.pdf)
+📄 Download the full thesis manuscript: [`thesis/document.pdf`](./thesis/document.pdf)
 
 ---
 
