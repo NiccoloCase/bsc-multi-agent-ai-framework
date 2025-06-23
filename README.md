@@ -23,12 +23,12 @@ The increasing complexity of modern AI systems—especially those based on large
 
 ## Project Overview
 
-The project implements a reflective and self-aware AI system prototype based on:
+The project implements a reflective and self-aware AI system based on:
 
 * **Reflection Architectural Pattern**: for dynamic, runtime adaptability.
 * **AI Bill of Materials (AIBOM)**: to ensure structured, transparent documentation of AI components.
 
-This dual-layer architecture, derived from SALLMA, includes:
+This dual-layer architecture, derived from SALLMA (Software Technologies Lab., University of Florence), includes:
 
 * **Knowledge Layer**: Meta-models for AI workflows and agent configurations.
 * **Operational Layer**: Real-time execution and orchestration of cognitive workflows.
@@ -68,6 +68,26 @@ The solution aligns with emerging AI governance standards, supporting explainabi
 * Responds to meta-model updates and logs runtime events.
 * Enables runtime adaptation.
 
+
+---
+
+
+
+## Benefits of a Reflective Approach
+A reflective approach offers several key advantages:
+
+* **Dynamic Reconfiguration**: The system can adapt its behavior and structure at runtime by modifying its meta-level, eliminating the need for redeployment.
+* **Separation of Concerns**: Decoupling application logic (Base Level) from the Knowledge Layer (Meta Level) — which experiences more frequent changes — significantly enhances maintainability and extensibility.
+* **Semantic Interoperability**: Components, even without prior knowledge of each other, can interact seamlessly. This facilitates the integration of diverse agents into cohesive workflows, enabling the composition of complex and adaptive interactions.
+* **Explainability and Traceability**: By monitoring the system's components and behaviors, the meta-level establishes a foundation for a self-aware and auditable architecture. This empowers the system to track its composition, explain decision-making rationale, and trace outcomes.
+
+
+
+
+
+
+---
+
 ## Workflow Execution
 
 This framework includes a custom-built workflow engine designed specifically for dynamic AI workflows. 
@@ -98,6 +118,9 @@ Components (nodes) in a workflow are often created independently, making their i
 When the **Workflow Executor** detects that a node cannot be executed due to missing or mismatched inputs, it invokes the Port Adapter. If a valid adaptation is found, the workflow is patched at runtime and updated in the Knowledge Layer for future reuse, avoiding redundant adaptation.
 
 This process improves the system's **resilience** to breaking changes. For example, if a node is updated and its interface changes, the system may auto-correct the workflow without human intervention.
+
+
+
 
 
 
@@ -187,7 +210,6 @@ MONGO_VECTOR_SEARCH_DEMO_URI=your_vector_search_mongodb_connection_string
   * **48 Unit Tests**: Model validation, port logic.
   * **54 Integration Tests**: LLM calls, schema conversion, DB access.
   * **2 End-to-End Tests**: RAG workflows and adaptations.
-* Includes real LLM API calls for schema and intent validation.
 
 ---
 
