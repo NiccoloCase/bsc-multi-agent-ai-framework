@@ -149,6 +149,43 @@ This approach highlights the flexibility and autonomy of the system while acknow
 
 
 
+---
+
+## Testing Summary
+
+* **104 tests total**:
+
+  * **48 Unit Tests**: Model validation, port logic.
+  * **54 Integration Tests**: LLM calls, schema conversion, DB access.
+  * **2 End-to-End Tests**: RAG workflows and adaptations.
+
+---
+
+## Case Study: AI4NE / NE4AI
+
+A practical demonstration shows cognitive workflow routing of AI tasks based on:
+
+* User intent analysis
+* Network and hardware constraints
+* Real-time model selection from AIBOM
+* Regulatory and security checks
+
+Demonstrated benefits:
+
+* Increased traceability and transparency
+* Runtime fault tolerance and adaptability
+* Compliance with AI governance mandates
+
+---
+
+## Future Work
+
+* Deploy as distributed SALLMA architecture
+* Improve AI-driven workflow synthesis and evaluation
+* Add security layers: blockchain, ZK proofs, verifiable credentials
+* Expand to new domains via domain-specific ontologies and AIBOM schemas
+* Research on quantitative evaluations and knowledge subtraction scenarios.
+
 
 
 ---
@@ -201,53 +238,5 @@ MONGO_VECTOR_SEARCH_DEMO_URI=your_vector_search_mongodb_connection_string
      ```
 
 
----
-
-## Testing Summary
-
-* **104 tests total**:
-
-  * **48 Unit Tests**: Model validation, port logic.
-  * **54 Integration Tests**: LLM calls, schema conversion, DB access.
-  * **2 End-to-End Tests**: RAG workflows and adaptations.
-
----
-
-## Case Study: AI4NE / NE4AI
-
-A practical demonstration shows cognitive workflow routing of AI tasks based on:
-
-* User intent analysis
-* Network and hardware constraints
-* Real-time model selection from AIBOM
-* Regulatory and security checks
-
-Demonstrated benefits:
-
-* Increased traceability and transparency
-* Runtime fault tolerance and adaptability
-* Compliance with AI governance mandates
-
----
-
-## Future Work
-
-* Deploy as distributed SALLMA architecture
-* Improve AI-driven workflow synthesis and evaluation
-* Add security layers: blockchain, ZK proofs, verifiable credentials
-* Expand to new domains via domain-specific ontologies and AIBOM schemas
-* Research on quantitative evaluations and knowledge subtraction scenarios.
-
----
-
-
-## Authors
-
-* Niccolò Caselli (Università degli Studi di Firenze)
-
-## Supervisors
-
-* Prof. Enrico Vicario
-* Marco Becattini
 
 
