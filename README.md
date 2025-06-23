@@ -158,11 +158,51 @@ This approach highlights the flexibility and autonomy of the system while acknow
 
 ## How to Run
 
-1. Clone the repository.
-2. Set API credentials and MongoDB URI in `.env` or `application.yml`.
-3. Ensure MongoDB instance is running (Atlas or local).
-4. Launch with your IDE or `mvn spring-boot:run`.
-5. Test via Postman, CLI, or browser interface.
+
+
+### Environment Variables Setup
+Before running the application, configure the following environment variables:
+
+```bash
+# OpenAI API Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Anthropic API Configuration  
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+
+# MongoDB Configuration
+MONGO_URI=your_mongodb_connection_string
+MONGO_TEST_URI=your_test_mongodb_connection_string
+MONGO_VECTOR_SEARCH_DEMO_URI=your_vector_search_mongodb_connection_string
+```
+
+### Running the Application
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd <project-directory>
+   ```
+
+2. **Set up environment variables**
+
+3. **Configure MongoDB Atlas**
+   - **Required Search Indexes**: The project requires the following search indexes for semantic and hybrid search functionality:
+     
+     | Collection | Index Name | Type |
+     |------------|------------|------|
+     | `intents` | `intent_vector_index` | vectorSearch |
+     | `meta_nodes` | `node_search_index` | search |
+     | `meta_nodes` | `node_vector_index` | vectorSearch |
+     
+     These indexes must be created and in READY status before running the application.
+
+4. **Launch the application**
+
+     ```bash
+     mvn spring-boot:run
+     ```
+
 
 ---
 
