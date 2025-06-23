@@ -92,6 +92,18 @@ The solution aligns with emerging AI governance standards, supporting explainabi
 * OpenAI & Anthropic APIs
 * WireMock (for integration test mocking)
 
+
+---
+
+![Workflow Execution Overview](./supplementary-materials/images/execution.png)
+
+*Figure: Execution phase of a cognitive workflow, showing port adaptation and reflective runtime logic.*
+
+
+
+
+
+
 ---
 
 ## How to Run
