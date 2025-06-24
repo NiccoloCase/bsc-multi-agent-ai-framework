@@ -26,7 +26,7 @@ The increasing complexity of modern AI systems—especially those based on large
 
 ## Table of Contents
 
-1. [Chapter Overview](#chapters-chapter-overview)
+1. [Thesis Chapters Overview](#thesis-chapters-overview)
 2. [Project Overview](#project-overview)
 3. [Key Features](#key-features)
 4. [Architecture Summary](#architecture-summary)
@@ -44,20 +44,16 @@ The increasing complexity of modern AI systems—especially those based on large
 
 ## Thesis Chapters Overview
 
-### Chapter 1
-**Introduction and Background** |
+### 1. Introduction and Background
 Establishes the shift from monolithic to modular AI systems, introduces SBOM and its AI extension (AIBOM), analyzes pressing novel regulatory requirements, and reviews current adoption trends and existing research gaps.
 
-### Chapter 2
-**A Two-Fold Framework for AIBOM in Cognitive Workflows** |
+### 2. A Two-Fold Framework for AIBOM in Cognitive Workflows
 Presents the core framework using Reflection architecture and extended SALLMA for LLM-based agents, detailing the dual-layer design and runtime adaptations.
 
-### Chapter 3
-**Relevant Use Cases: the AI4NE and NE4AI scenario** |
+### 3. Relevant Use Cases: the AI4NE and NE4AI scenario
 Demonstrates intelligent AI request routing across cloud/network resources, from intent detection to routing finalization with experimental results.
 
-### Chapter 4
-**Discussion and Future Work** |
+### 4. Discussion and Future Work
 Analyzes framework complexities, development challenges, and outlines implementation refinements and future research directions.
 
 
