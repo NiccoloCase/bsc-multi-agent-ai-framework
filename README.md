@@ -21,48 +21,38 @@
 The increasing complexity of modern AI systems—especially those based on large language models (LLMs) and multi-agent architectures—demands new methodologies to ensure system-level reliability, traceability, and adaptability. Existing tools offer limited visibility into software and knowledge dependencies, leaving a gap in accountable and maintainable cognitive workflows. This thesis addresses that gap by proposing a two-fold framework combining the Reflection architectural pattern with an extended notion of the Software Bill of Materials (SBOM), adapted for AI systems as the Artificial Intelligence Bill of Materials (AIBOM). This novel integration—largely unexplored in current literature—enables runtime adaptability and structured traceability. The architecture features a knowledge layer managing workflow meta-models and an operational layer for task execution. Reflection supports semantic interoperability across heterogeneous components whose interactions are not predefined. A use case in AI for Network Engineering (AI4NE) and Network Engineering for AI (NE4AI) demonstrates how cognitive workflows dynamically route requests across cloud resources based on evolving constraints (e.g., latency, energy efficiency, and computational cost). This work opens several research directions and lays the groundwork for further investigation into structured multi-agent architectures and their alignment with forthcoming AI governance regulations.
 
 
+
+---
+
+## Table of Contents
+
+1. [Chapter Overview](#chapter-overview)
+2. [Project Overview](#project-overview)
+3. [Key Features](#key-features)
+4. [Architecture Summary](#architecture-summary)
+5. [Benefits of a Reflective Approach](#benefits-of-a-reflective-approach)
+6. [Workflow Execution](#workflow-execution)
+
+   * [Ports Adaptation](#ports-adaptation)
+   * [Workflow Synthesis](#workflow-synthesis)
+7. [Case Study: AI4NE / NE4AI](#case-study-ai4ne--ne4ai)
+8. [Future Work](#future-work)
+9. [Testing Summary](#testing-summary)
+10. [How to Run](#how-to-run)
+
+---
+
+
 ## Chapter Overview
 
-1. Introduction and Background
+1. **Introduction and Background**: Highlights the evolution from monolithic AI agents to cognitive workflows. Discusses the need for context-aware, adaptive systems.
+2. **Historical Context**: Deep dive into the origins and evolution of SBOM. Explains its transformation into AIBOM and relevance to AI policy.
+3. **Literature Review & State of the Art**: Surveys real-world SBOM adoption and gaps, including pioneering initiatives like DataBOM and model cards.
+4. **System Design and Implementation**: Describes the dual-layer architecture and innovations like dynamic port matching.
+5. **Use Case: AI4NE & NE4AI**: Application of the framework to real-world network engineering constraints.
+6. **Discussion and Future Work**: Outlines open challenges and next research directions.
 
-Highlights the evolution from monolithic AI agents to cognitive workflows.
-
-Discusses the need for context-aware, adaptive systems.
-
-2. Historical Context
-
-Deep dive into the origins and evolution of the Software Bill of Materials (SBOM).
-
-Traces its transformation into AIBOM amid AI regulatory trends such as the EU AI Act and U.S. Executive Orders.
-
-3. Literature Review & State of the Art
-
-Covers adoption statistics and challenges from real-world SBOM use.
-
-Analyzes SBOM/AIBOM documentation gaps for AI systems.
-
-Reviews pioneering work on DataBOM, blockchain for AI accountability, and model cards.
-
-4. System Design and Implementation
-
-Proposes a dual-layered architecture inspired by SALLMA.
-
-Explores dynamic port matching, structured data flow, and meta-model versioning.
-
-5. Use Case: AI4NE & NE4AI
-
-Demonstrates the framework in an intelligent network routing scenario.
-
-Shows runtime adaptability to hardware constraints, model selection, and compliance.
-
-6. Discussion and Future Work
-
-Addresses challenges, from meta-model consistency to domain generalization.
-
-Suggests next steps for distributed deployment, security, and automatic workflow synthesis.
-
-This structure reflects months of in-depth research, including policy review, tool analysis, architecture design, and testing of novel engineering patterns.
-
+---
 
 
 
