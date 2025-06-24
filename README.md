@@ -26,18 +26,18 @@ The increasing complexity of modern AI systems—especially those based on large
 
 ## Table of Contents
 
-1. [Thesis Chapters Overview](#thesis-chapters-overview)
-2. [Project Overview](#project-overview)
-3. [Key Features](#key-features)
-4. [Architecture Summary](#architecture-summary)
-5. [Benefits of a Reflective Approach](#benefits-of-a-reflective-approach)
-6. [Workflow Execution](#workflow-execution)
+1.  [Thesis Chapters Overview](#thesis-chapters-overview)
+2.  [Project Overview](#project-overview)
+3.  [Key Features](#key-features)
+4.  [Architecture Summary](#architecture-summary)
+5.  [Benefits of a Reflective Approach](#benefits-of-a-reflective-approach)
+6.  [Workflow Execution](#workflow-execution)
 
-   * [Ports Adaptation](#ports-adaptation)
-   * [Workflow Synthesis](#workflow-synthesis)
-7. [Case Study: AI4NE / NE4AI](#case-study-ai4ne--ne4ai)
-8. [Future Work](#future-work)
-9. [Testing Summary](#testing-summary)
+    * [Ports Adaptation](#ports-adaptation)
+    * [Workflow Synthesis](#workflow-synthesis)
+7.  [Case Study: AI4NE / NE4AI](#case-study-ai4ne--ne4ai)
+8.  [Future Work](#future-work)
+9.  [Testing Summary](#testing-summary)
 10. [How to Run](#how-to-run)
 
 ---
