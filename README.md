@@ -26,7 +26,7 @@ The increasing complexity of modern AI systems—especially those based on large
 
 ## Table of Contents
 
-1. [Chapter Overview](#chapter-overview)
+1. [Chapter Overview](#chapters-chapter-overview)
 2. [Project Overview](#project-overview)
 3. [Key Features](#key-features)
 4. [Architecture Summary](#architecture-summary)
@@ -42,15 +42,24 @@ The increasing complexity of modern AI systems—especially those based on large
 
 ---
 
+## Thesis Chapters Overview
 
-## Chapter Overview
+### Chapter 1
+**Introduction and Background** |
+Establishes the shift from monolithic to modular AI systems, introduces SBOM and its AI extension (AIBOM), analyzes pressing novel regulatory requirements, and reviews current adoption trends and existing research gaps.
 
-1. **Introduction and Background**: Highlights the evolution from monolithic AI agents to cognitive workflows. Discusses the need for context-aware, adaptive systems.
-2. **Historical Context**: Deep dive into the origins and evolution of SBOM. Explains its transformation into AIBOM and relevance to AI policy.
-3. **Literature Review & State of the Art**: Surveys real-world SBOM adoption and gaps, including pioneering initiatives like DataBOM and model cards.
-4. **System Design and Implementation**: Describes the dual-layer architecture and innovations like dynamic port matching.
-5. **Use Case: AI4NE & NE4AI**: Application of the framework to real-world network engineering constraints.
-6. **Discussion and Future Work**: Outlines open challenges and next research directions.
+### Chapter 2
+**A Two-Fold Framework for AIBOM in Cognitive Workflows** |
+Presents the core framework using Reflection architecture and extended SALLMA for LLM-based agents, detailing the dual-layer design and runtime adaptations.
+
+### Chapter 3
+**Relevant Use Cases: the AI4NE and NE4AI scenario** |
+Demonstrates intelligent AI request routing across cloud/network resources, from intent detection to routing finalization with experimental results.
+
+### Chapter 4
+**Discussion and Future Work** |
+Analyzes framework complexities, development challenges, and outlines implementation refinements and future research directions.
+
 
 ---
 
