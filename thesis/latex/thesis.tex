@@ -1,0 +1,196 @@
+\documentclass[a4paper,oneside, english]{Tptesi2}
+
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsmath,amssymb}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{subfigure}
+\usepackage{algorithmic}
+\usepackage{framed}
+\usepackage{rotating}
+\usepackage{cite}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{graphicx} 
+\usepackage{tabularx}
+\usepackage[export]{adjustbox}
+
+\usepackage{tikz}
+\usepackage{rotating}
+
+\usepackage{csquotes} % virgolette tipografiche per citazioni brevi
+\usepackage{hyperref} % Per la gestione degli URL
+\usepackage{xurl}     % Per la suddivisione degli URL lunghi
+
+
+% FOOT NOTE
+\usepackage{setspace}
+\usepackage{footmisc}
+\setstretch{0.9} 
+\renewcommand{\footnotelayout} {\setstretch{0.9}} % Footnote con interlinia minore
+\setlength{\skip\footins}{20pt} % Più spazio tra note e testo
+
+% BOXES
+\usepackage{tcolorbox}
+\usepackage{capt-of}
+\tcbuselibrary{theorems,breakable}
+\newcounter{promptboxcounter}
+\renewcommand{\thepromptboxcounter}{\arabic{promptboxcounter}}
+
+\tcbset{
+  promptboxstyle/.style={
+    colback=gray!15,   
+    colframe=gray!50, 
+    boxrule=0.5pt,    
+    arc=3pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable,
+    after skip=1.5pt, 
+  }
+}
+
+\newtcolorbox{promptboxcontent}[1][]{%
+  promptboxstyle,    
+  #1               
+}
+
+\newcommand{\promptcaption}[2]{
+  \refstepcounter{promptboxcounter}
+  \par\vspace{4pt}
+  \noindent \small Prompt \thepromptboxcounter: #2%
+  \label{#1}
+  \par\vspace{4pt}
+}
+
+
+
+% Packages -----------------------------------------------------------------------
+%\usepackage{amsthm}
+%\usepackage{amsmath}          % Non necessario se usi TPTESI2 perche' gia` incluso
+%\usepackage[dvips]{graphicx}  % Non necessario se usi TPTESI2 perche' gia` incluso
+%\usepackage{url} %non usare se si usa hyperref
+
+
+\newcommand{\mr}{\emph{motore di ricerca}}
+\newcommand{\Mr}{\emph{Motore di ricerca}}
+\newcommand{\ws}{Web~service }
+
+
+% Use a small font for the verbatim environment
+\makeatletter  % makes '@' an ordinary character
+\renewcommand{\verbatim@font}{%
+  \ttfamily\footnotesize\catcode`\<=\active\catcode`\>=\active%
+}
+\makeatother   % makes '@' a special symbol again
+%
+% Simboli Matematici -------------------------------------------------------------
+%\newcommand{\h}{\mathcal{H}_\infty} % scorciatoia per sequenza usata spesso
+% Definizioni & Teoremi ----------------------------------------------------------
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{lemma}[teorema]{Lemma}
+%\theoremstyle{definition}
+\newtheorem{definizione}{Definizione}[chapter]
+\newtheorem{proposizione}[definizione]{Proposizione}
+% Formattazione Figure -----------------------------------------------------------
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{3}
+\def\topfraction{1}
+\def\textfraction{0}
+% Fuzz ---------------------------------------------------------------------------
+%\hfuzz10cm %Non scassare linee che escono dal bordo
+% Frontespizio -------------------------------------------------------------------
+\title{Designing Self-Aware Multi-Agent AI Systems: A Two-Fold Framework Based on AIBOM and Reflective Architecture}
+
+\author{Niccolò Caselli}
+\titolocorso{Computer Engineering}
+\chair{Prof. Enrico Vicario}
+\numberofmembers{1} %numero dei relatori
+\degreeyear{2024/2025}
+\numerocorrelatori{1} %numero dei correlatori
+\correlatori{Marco Becattini} % i correlatori separati da \\
+
+
+%
+% ---- Inclusioni (vedi piu` sotto per il comando "include" --------------
+%\includeonly {introduzione,chapter1, chapter2}
+%\includeonly {chapter1, chapter2, chapter3, chapter4, chapter5, chapter6}
+%\includeonly{chapter6}
+%
+\hypersetup{%
+%  pdfpagemode=FullScreen,%
+  plainpages=false,%
+  breaklinks,%
+  pdftitle={},%
+  pdfauthor={},%
+  pdfsubject={},%
+  pdfkeywords={},%
+  colorlinks=false}
+
+\begin{document}
+
+\frontmatter
+
+%\hyphenation{}
+%
+\pagestyle{headings} % rende attive le impostazioni sulla testata!
+%
+\maketitle % crea il frontespizio (ricordati di copiare "stemma.eps" nella tua directory)
+%
+%
+%\pagenumbering{roman}
+
+
+\begingroup
+\renewcommand{\baselinestretch}{1.2}  % Reduce from default 1.5
+\tableofcontents
+\endgroup
+
+
+\cleardoublepage
+%\addcontentsline{toc}{chapter}{Elenco delle figure}
+%\listoffigures   % inserisce indice figure
+%\addcontentsline{toc}{chapter}{Elenco delle tabelle}
+%\listoftables    % inserisce indice tabelle
+%\addcontentsline{toc}{chapter}{Elenco degli algoritmi}
+%\listofalgorithms
+%
+%--------------- Inizio del testo vero e proprio
+%
+
+
+
+
+
+%\cleardoublepage
+%\pagenumbering{arabic}
+%\input{files/ringraziamenti} % TODO: activate 
+\frontmatter
+\include{files/introduction}
+
+\mainmatter
+\include{files/chapter1}
+\include{files/chapter2}
+\include{files/chapter3}
+\include{files/chapter4}
+
+
+\appendix
+\include{Template_tesi/files/appendix_details}
+\include{Template_tesi/files/appendix_spring}
+
+
+
+
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{References}
+
+\bibliographystyle{plain}
+\bibliography{files/biblio}
+\bibliographystyle{unsrt}
+%\bibliography{sp,xml}
+
+\end{document} 

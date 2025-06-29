@@ -1,0 +1,110 @@
+\chapter{Comparative Analysis of LangChain and Spring AI
+%LangChain and Spring AI
+} \label{ch:appendix_spring}
+
+This appendix presents a comparative analysis conducted to identify the most suitable framework for integrating large language models (LLMs) within the scope of this thesis project, ultimately motivating the decision to adopt a Java-based approach. The study focused on evaluating LangChain with Python and Spring AI with Java. The objective was to assess development experience, framework capabilities, and underlying design philosophies.
+
+
+
+\section*{LangChain Overview}
+
+LangChain is an open source framework introduced in October 2022, conceived to simplify the integration of LLMs into applications, allowing developers to build complex AI-powered systems. Over time, the LangChain ecosystem has grown to include additional tools such as LangGraph and LangSmith. Actively maintained by a passionate and growing community, LangChain has been widely adopted across various sectors, ranging from startups to large enterprises.
+The framework is organized around modular components, such as chains, tools, memory, and agents, and offers seamless integration with a variety of foundational models, vector stores, APIs, and data loaders. LangChain also provides support for advanced agent architectures including \texttt{ReAct}, \texttt{MRKL}, \texttt{Plan-and-Execute}, and \texttt{BabyAGI}, enabling out-of-the-box capabilities for decision making and task decomposition.
+
+
+
+
+\section*{Spring AI Overview}
+Spring AI is an initiative within the Spring framework that facilitates the integration of generative AI capabilities into enterprise Java applications. Released in a milestone version in May 2024, its first stable release is expected by mid-2025\footnote{According to a recent update from the Spring team (April 2025), a release candidate (RC1) is scheduled for the following month, with a general availability (GA) release planned shortly after, in time for the Spring IO conference in Barcelona. See: \url{https://spring.io/blog/2025/04/10/spring-ai-1-0-0-m7-released} (accessed April 21, 2025).}. Some of the most notable features include:
+
+\begin{itemize}[leftmargin=*, label=--] 
+    \item \textbf{Spring Ecosystem Integration:} Seamlessly integrates with the existing Spring environment, enabling developers to leverage AI capabilities within the Spring ecosystem, following established Spring patterns.
+    \item \textbf{Enterprise Scalability:} Designed to support enterprise-level applications, enabling the development of AI solutions that scale effectively in diverse environments. It provides robust scalability through its multi-threading capabilities and efficient use of the JVM, making Java preferable for handling complex concurrent workloads.
+    \item \textbf{Seamless Deployment:} The Spring ecosystem provides a comprehensive framework that facilitates the efficient deployment of AI models in heterogeneous environments. Components such as Spring Boot and Spring Cloud support the scalable orchestration of microservices, making Spring particularly well-suited for production-ready, distributed AI systems.
+\end{itemize}
+
+
+
+
+\section*{Feature Comparison}
+
+
+Spring AI and LangChain use distinct conceptual approaches. Among the key differences highlighted in Table \ref{tab:comparison}, the most notable is their support for agents, for which the two frameworks adopt fundamentally different strategies. LangChain follows an agent-first approach and natively supports several agent architectures, integrating a wide range of tools such as web search (allowing retrieval using the entire internet), databases, external APIs, and external applications. Conversely, Spring AI follows a more workflow-oriented approach, emphasizing \textit{Design for Reliability}. Drawing on insights from a research publication by Anthropic \cite{schluntz2024building}, it promotes simple, composable patterns rather than complex frameworks. At the time of writing, Spring AI does not directly integrate tools for creating agents. However, the Spring Blog \cite{tzolov2025agentic} documents \textit{Agentic Patterns} (e.g., Chain Workflow, Parallelization Workflow, Routing Workflow, and Orchestrator-Workers) that can be implemented using the framework. Consequently, there is currently no autonomous decision loop like LangChain's AgentExecutor or a native mechanism for automatic routing or re-planning (such as Plan-and-Execute). But this is likely to change as the project matures.
+
+
+\begin{table}[htbp]
+\caption{Comparison of Key Features Between LangChain and Spring AI for LLM-Based Application Development, updated as of April 2025}
+\label{tab:comparison}
+\begin{center}
+\begin{tabularx}{\linewidth}{|l|X|X|}
+\hline
+\textbf{Feature} & \textbf{LangChain} & \textbf{Spring AI} \\ \hline
+\textbf{Language Support} & Python—JavaScript and Java secondary & Java/Kotlin \\ \hline
+\textbf{Design Approach} & Modular chains, tools, and memory components & Spring-style abstractions (e.g., templates, dependency injection) \\ \hline
+\textbf{Model Providers} & 50+ supported providers & 15+ supported providers \\ \hline
+\textbf{Agents} & Native support for agents and tools & Currently unsupported \\ \hline
+\textbf{Vector Search} & Supported & Supported \\ \hline
+\textbf{Web Search} & Supported (built-in APIs) & No native support; external integration required \\ \hline
+\textbf{Web Scraping} & Supported (e.g., ScrapeGraph, WebVoyager, ScrapingAnt) & No native support; can be integrated externally \\ \hline
+\textbf{State Management} & Conversation memory, LangGraph for workflows & Chat memory support \\ \hline
+\textbf{Observability} & LangSmith integration for debugging and traces & Observability through Spring ecosystem tools \\ \hline
+\textbf{Deployment} & Supports Docker/Kubernetes; flexible runtime environments & Optimized for Spring Boot and cloud-native deployments \\ \hline
+\textbf{REST API Support} & Requires web frameworks like Flask, FastAPI, etc. & Built-in Spring Web support \\ \hline
+\textbf{Primary Focus} & Rapid prototyping, research, startup-friendly & Enterprise-grade backend integration \\ \hline
+\end{tabularx}
+\end{center}
+\end{table}
+
+
+
+
+\section*{Development Experiment}
+
+In order to assess the development experience with LangChain and Spring AI, two parallel Retrieval-Augmented Generation (RAG) pipelines were implemented, one in Python and the other in Java. The pipelines were developed using the following components:
+
+\begin{itemize}[leftmargin=*, label=--] 
+    \item \textbf{LangChain:} Utilized \texttt{FAISS} for similarity search and OpenAI \texttt{GPT-4}, served through \texttt{FastAPI}. 
+    \item \textbf{Spring AI:} Employed \texttt{SimpleVectorStore} in-memory vector store, \texttt{GPT-4}, and exposed via REST APIs through \texttt{Spring Web}. 
+\end{itemize}
+    
+The implementation of this comparative analysis is available in the corresponding GitHub repository\footnote{\url{https://github.com/NiccoloCase/bsc-multi-agent-ai-framework/tree/main/supplementary-materials/langchain-vs-springai}}. Please note that this project serves as a proof-of-concept to evaluate the development process and is not intended for production use.
+
+
+\section*{Development Insights}
+
+During the experimentation, several factors were taken into account, with the key differences summarized in Table \ref{tab:dev_results}.
+
+A significant observation concerns the ease of setup, documentation, and community support for the two frameworks, which impact the overall development experience. Although LangChain provides extensive documentation, it can sometimes be fragmented and difficult to navigate—especially due to frequent updates that lead to outdated and conflicting information. Furthermore, the lack of clear overviews and guided introductions can leave beginners feeling overwhelmed. 
+However, these issues are mitigated by an active community that consistently produces high-quality articles and resources. Additionally, LangChain is designed to be effortless to set up, especially with its straightforward installation process via \texttt{pip}. In contrast, Spring AI benefits from being part of the well-established Spring ecosystem. While the documentation is still evolving and on-line resources remain limited, its integration with Spring Initializr and its more focused scope make it easier for newcomers to get started. Furthermore, there is a reasonable expectation that Spring AI will adhere to the same principles of stability, backward compatibility, and enterprise-grade documentation of the Spring project.
+
+Lastly, it is worth noting the relative verbosity of Java compared to Python, which can impact development speed, especially in tasks such as string manipulation and prompt construction. In this regard, Spring AI faces a disadvantage: operations that are concise in Python often require additional boilerplate in Java. This is especially evident in tasks like JSON parsing and construction. Spring AI addresses these challenges by offering higher-level abstractions, including helper classes like \texttt{PromptTemplate} and predefined prompt structures, which reduce manual string handling and streamline prompt creation. Nonetheless, Java's strong typing, robust IDE support, and mature build tools—such as Maven and Gradle—contribute to improved maintainability and reliability.
+
+\begin{table}[htbp]
+\caption{Development Experience: LangChain vs Spring AI}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{|l|X|X|}
+\hline
+\textbf{Aspect} & \textbf{LangChain (Python)} & \textbf{Spring AI (Java)} \\
+\hline
+Ease of Setup & High & Moderate \\
+\hline
+Modularity & High & High \\
+\hline
+Integration with Backend & Low & High \\
+\hline
+Documentation  & Comprehensive & Growing \\
+\hline
+Community Support & Large and active & Emerging, backed by Spring ecosystem \\
+\hline
+\end{tabularx}
+\label{tab:dev_results}
+\end{center}
+\end{table}
+
+
+
+
+\section*{Conclusive Framework Choice and Motivation}
+
+During the early design phase of this thesis, the choice between Java and Python was made. Python's extensive support for state-of-the-art LLM agents initially suggested it as the natural choice. However, Java's alignment with established software engineering principles—especially in terms of tooling, maintainability, and scalability—ultimately led to its preference. Its robust static typing system is particularly suited for implementing the reflective architecture proposed in this study: although type annotations were introduced in Python 3, Java's enforced type safety provides a more formal structural foundation for clearly demonstrating the Reflection Pattern. Furthermore, given that the project addresses themes such as Responsible AI and Software Transparency, Java's long-standing role in enterprise systems was a decisive factor. The inherent emphasis of the Spring ecosystem on scalability, security, and maintainability directly supports these objectives. Additionally, since the project was conceived to develop a structured meta-architecture for AI workflows from the ground up, advanced LangChain features—such as complex toolchains and built-in agentic patterns—were neither necessary nor aligned with the study's goals. Lastly, the novelty of Spring AI within the academic literature offered a valuable opportunity for original contribution.

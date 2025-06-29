@@ -1,0 +1,80 @@
+\chapter{Relevant Use Cases: the AI4NE and NE4AI scenario}\label{ch:chapter3}
+
+To illustrate the methodology in action, we developed a use case that leverages AI both for networking (AI4NE) and networking for AI (NE4AI). Concretely, the system must route user tasks across different nodes (or cloud resources) according to user ``intent'' and hardware availability, while also relying on specialized AI modules to optimize networking decisions. Below is an overview of how the cognitive workflow proceeds:
+\begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}]
+    \item \textbf{User Intent Detection}
+    \item \textbf{Potential Routes Definition}
+    \item \textbf{AI Request Analysis and Hardware Selection}
+    \item \textbf{Routing Finalization}
+\end{enumerate}
+
+\subsection{User Intent Detection}
+
+Upon receiving a request from a client (e.g., ``Render a real-time analytics dashboard'' or ``Execute large-scale model training''), a User Intent Agent (an LLM-based agent) interprets the high-level goal and translates it into technical requirements. This step involves:
+\begin{itemize}[leftmargin=*, label=--]
+    \item Parsing the user’s textual or spoken instruction.
+    \item Mapping that intent to known categories (inference task, training job, data filtering, etc.).
+    \item Consulting the AIBOM to understand which AI models or libraries are permissible for this kind of request (e.g., ``Model X is suitable for object detection, but not recommended for large-scale text processing.'').
+\end{itemize}
+
+All discovered components relevant to the request---such as the required Python libraries, pretrained model references, or potential data pipelines---are recorded (or updated) in the AIBOM to ensure the system remains transparent about which components it is about to use.
+
+\subsection{Potential Routes Definition}
+
+Next, a Routing Planner Agent searches for feasible network paths between the client application and the available compute nodes. Using standard network protocols and topological information, it generates a list of candidate routes. Distinct network constraints (latency, throughput, energy consumption, cost, etc.) are factored in, often requiring multiple rounds of negotiation with other agents or external controllers.
+
+While performing this step, the agent consults the meta-level reflection data:
+\begin{itemize}[leftmargin=*, label=--]
+    \item Query which nodes currently have the AI libraries or model versions needed.
+    \item Verify compliance constraints from the AIBOM (for example, nodes that must not run a certain unpatched version of a library due to security advisories).
+    \item Eliminate routes if the underlying hardware or software stack is known to be unreliable or unlicensed for the requested model (e.g., GPU licensing restrictions).
+\end{itemize}
+
+\subsection{AI Request Analysis and Hardware Selection}
+
+Once potential routes are defined, the system needs to confirm that the selected nodes can actually fulfill the user’s AI request:
+\begin{itemize}[leftmargin=*, label=--]
+    \item \textbf{Hardware Analysis}: A specialized Resource Evaluator Agent checks CPU, GPU, or TPU availability. It correlates the user’s task (as identified in the Intent Detection step) with the required hardware acceleration or memory footprint.
+    \item \textbf{AIBOM Query}: The agent queries the AIBOM to ensure the model in question is compatible with the node’s software environment (e.g., particular library versions, known security patches).
+    \item \textbf{Recommendation Generation}: Based on these checks, the agent recommends the best route-node pairs, factoring in performance versus cost.
+\end{itemize}
+
+Because some tasks may rely on large LLMs or sensitive data, the system leverages the AIBOM to confirm compliance with data residency requirements or usage constraints. If mismatches are found (e.g., a node is running an older version of the model that has known biases or vulnerabilities), the AIBOM triggers a meta-level adaptation to either update the model or redirect the request elsewhere.
+
+\subsection{Routing Finalization}
+
+Finally, a Decision Orchestrator Agent merges outputs from the previous steps:
+\begin{itemize}[leftmargin=*, label=--]
+    \item It confirms that each node along the selected route meets both networking requirements (latency thresholds, bandwidth availability) and AI-specific constraints (model version, patch level, resource availability).
+    \item It finalizes the routing decision, effectively instructing the traffic or job scheduler to provision the user’s task on the chosen path.
+    \item A final log entry is written to the AIBOM, capturing the route chosen, the models and libraries used, and any dynamic modifications performed.
+\end{itemize}
+
+Throughout this process, the system’s meta-level continuously updates the AIBOM with new or modified dependencies, ensuring that future queries and audits will accurately reflect the environment in which each decision was made.
+
+\subsection{Results of Experimentation} \label{sec:results}
+
+To assess the feasibility and advantages of this approach, we deployed a simplified prototype in a controlled lab environment:
+\begin{itemize}[leftmargin=*, label=--]
+    \item \textbf{Experimental Setup}: We simulated a small-scale software-defined network (SDN) with four nodes, each running different hardware (e.g., CPU-only vs. GPU-enabled). A suite of test tasks---ranging from lightweight inference jobs to more resource-intensive training tasks---was submitted to the system with varying user intents.
+    \item \textbf{Metrics}: We tracked (i) route feasibility and correctness, (ii) average planning time, (iii) concurrency overhead when multiple tasks arrived simultaneously, and (iv) the completeness of the AIBOM logs.
+\end{itemize}
+
+
+\textbf{Observations:}
+\begin{itemize}[leftmargin=*, label=--]
+    \item The reflection layer effectively excluded nodes with incompatible or unpatched libraries, preventing known security threats and licensing violations.
+    \item Overall routing decisions, combined with the hardware analysis, converged in near real-time for simpler tasks, though more complex tasks introduced additional overhead.
+    \item Developers and auditors could readily trace each decision back to its underlying data (e.g., library versions, node constraints), facilitating clearer accountability.
+\end{itemize}
+
+
+Despite these positive findings, we encountered certain challenges, including the complexity of maintaining up-to-date meta-information and addressing partial failures when one agent’s local state diverges from the AIBOM record. These aspects are further discussed in Chapter 3. Nevertheless, our results demonstrate how integrating multi-agent orchestration with a reflective AIBOM-based approach can offer improved transparency, adaptability, and compliance in an AI-driven network environment, exemplifying the potential of AI4NE and NE4AI synergy.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{Template_tesi/img/I want to establish a 5G reliable connection to my friend.png}
+    \caption{Flowchart of the workflow nodes execution process, detailing the dynamic port adaptation process.}
+    \label{fig:w} 
+\end{figure}

@@ -1,0 +1,104 @@
+\chapter{Discussion and Future Work}\label{ch:chapter4}
+
+This final chapter presents a discussion of the proposed architecture's outcomes and explores its implications, limitations, and future evolution. Section \ref{sec:challenge} examines the key challenges encountered during development and the limits of the present implementation; Section \ref{sec:next_steps} outlines future research directions; finally, Section \ref{sec:conclusion} presents our concluding observations on the contribution of this work.
+
+
+\section{Challenges} \label{sec:challenge}
+
+The implementation of the proposed framework brought to light several challenges, which can be broadly categorized as architectural limitations of the framework and difficulties encountered during development.
+
+
+
+\subsection{Framework Complexities and Limitations}
+
+
+\subsubsection{Performance Overhead}
+The integration of meta-model catalogs introduced a measurable performance overhead compared to traditional approaches. The necessity to query and update meta-information at runtime, along with validating component compatibility, led to increased latency in workflow execution, as demonstrated by the controlled experiments illustrated in Chapter \ref{ch:chapter3}.
+This overhead is notably pronounced during the starting phases of workflow execution, where intent detection, variable extraction and mapping, and compatibility validation must occur before the actual processing begins. 
+While this performance bottleneck might be a concern in some latency-critical applications, it could be acceptable given the improved transparency, adaptability, and—most importantly—reliability, as demonstrated by the experiments.
+
+
+\subsubsection{Complexity of Meta-Information Management}
+One of the most notable challenges encountered was maintaining accurate and up-to-date metadata across the system. As the number of nodes and their interdependencies grew, the complexity of tracking configuration updates became substantial. Furthermore, the heterogeneous nature of AI components exacerbates this challenge. Different model providers use varying metadata and configuration formats, making it challenging to define an abstract schema that is suitable for all LLM providers.
+
+\subsubsection{State Consistency}
+The dual-layer architecture presents new challenges related to state consistency. For example, when workflows depend on nodes that are subjected to breaking changes, the system cannot automatically attempt to adapt. Similarly, the situation in which a workflow is running while the nodes are updated concurrently requires better management and is a subject of future inquiry. Such divergences can lead to decisions based on outdated or incomplete information, which can compromise reliability.
+
+\subsubsection{Domain Precision}
+A key complexity of the framework lies in configuring the system and meta-information to operate with fine granularity across diverse domains. Aiming for an out-of-the-box, highly adaptable system risks losing precision in specific applications. This issue was evident during the setup of the AI4NE/NE4AI experiments (Chapter \ref{ch:chapter3}). For example, the system's intent detector failed to recognize certain specialized operations as refinements of broader intent categories, suggesting the need for additional domain-specific knowledge. Similarly, variable extraction poses domain-dependent challenges. In some applications, variables must be extracted with absolute fidelity; in others, conversions or qualitative-to-quantitative mappings are required, while some cases demand intelligent aggregation (without fabricating data). Accordingly, core AI components must be dynamically configured per domain, striking a balance between generalizability and domain-specific precision.
+
+
+\subsection{Challenges in System Development}
+
+\subsubsection{Tooling Immaturity }
+While Spring AI offered a promising foundation for integrating LLM capabilities into Java-based systems, its relative novelty meant that documentation, tooling, and community support were still in the process of evolving. Consequently, several components required custom implementation, and some bugs were encountered—for example, issues with prompt templates and structured outputs failing due to JSON within the prompt, as documented in issue \texttt{\#2836}\footnote{See \url{https://github.com/spring-projects/spring-ai/issues/2836} (Accessed on June 9, 2025)} and issue \texttt{\#2347}\footnote{See \url{https://github.com/spring-projects/spring-ai/issues/2347} (Accessed on June 9, 2025)}.
+
+\subsubsection{Lack of Standardization}
+As discussed in Chapter \ref{ch:chapter1}, while the concept of SBOM is relatively mature in traditional software domains, its extension to AI remains unstandardized. This results in ambiguity when defining the scope and schema of the AIBOM, especially concerning components such as LLM configurations, datasets, prompt templates, and inter-agent interactions. Establishing an effective representation therefore required iterative refinement and custom schema design, given the absence of widely adopted best practices.
+
+
+\subsubsection{Evaluation of LLM-based Components}
+Validating the correctness and stability of LLM-powered services proved challenging due to their nondeterministic and open-ended nature. Extensive testing was required to guarantee high reliability, especially for the structured data flow. This involved testing complex, deeply nested adaptations of intricate schemas, as well as ensuring strict compliance with the structured output models. Moreover, guaranteeing consistent behavior across different prompts, providers, and model versions necessitated comprehensive integration testing, which incurred notable costs associated with API usage. For more details, see the testing strategy outlined in Appendix \ref{appendix_details}.
+
+
+
+\section{Next steps} \label{sec:next_steps}
+
+This section outlines future directions for refining the framework’s implementation and identifies key research opportunities.
+
+
+\subsection{Prospects for Implementation Refinement}
+
+
+\subsubsection{Advanced Workflow Synthesis }
+
+Although the current implementation is designed to support autonomous workflow synthesis, substantial research is still required. Nevertheless, this also opens up significant opportunities for advancement, particularly in the following areas:
+
+
+\begin{itemize}[leftmargin=*, label=--]
+  
+    \item\textbf{Workflow Optimization}: Developing a more sophisticated core logic that employs multi-objective optimization techniques could enable the system to balance competing objectives—such as performance, cost, energy efficiency, and regulatory compliance—simultaneously. 
+
+    \item\textbf{Formal Verification Methods}: Although the proposed implementation already features verification services to check the quality of meta-level artifacts, integrating formal verification techniques would further strengthen correctness guarantees. This is especially critical in safety-sensitive domains.
+    
+    \item\textbf{AI as a Judge}: Introducing an AI-based mechanism to automatically assess both the meta-model structure and execution outputs of workflows is necessary. This would enable the consistent evaluation of both automatically generated and manually crafted workflows, assisting in the detection of regressions and ensuring system reliability. Given the open-ended nature of workflow execution and the absence of an exact ground truth, an LLM agent is particularly well-suited for this task.
+
+\end{itemize}
+
+
+
+\subsubsection{Security and Privacy Enhancements}
+Future developments should focus on addressing security and privacy, building on the strategies already discussed in the cited works \cite{xia2024trust, barclay2022providing}. To improve accountability, integrating trust mechanisms such as verifiable credentials or blockchain-based audit trails could prove effective. In particular, the secure sharing of SBOM data could rely on techniques such as zero-knowledge proofs \cite{w3c_zkp}, which allow verification of compliance without revealing specific implementation details.
+
+
+
+\subsubsection{Enhanced Scalability}
+To facilitate enterprise-scale implementations, subsequent efforts should concentrate on:
+
+\begin{itemize}[leftmargin=*, label=--]
+\item\textbf{Distributed Architecture}: Evolute from the centralized prototype to a fully distributed system, as outlined in the SALLMA design, to ensure scalability and fault tolerance, while maintaining consistency across meta-models.
+
+\item\textbf{Hierarchical AIBOM Management}: Implement a multi-level AIBOM structure that supports efficient querying and updates at multiple levels of granularity—combining summary-level views for strategic decisions with detailed data for operational analysis.
+
+\item\textbf{Caching Strategy}: Replace in-memory caching with scalable solutions like Redis and introduce prefetching to anticipate metadata needs, reducing latency and improving system responsiveness.
+\end{itemize}
+
+
+
+\subsection{Directions for Future Research}
+
+To lay the foundation for future developments, this study opens up several promising research directions that aim to validate the proposed approach. 
+
+The first direction involves \textbf{quantitative evaluations} of the system via controlled modifications of the AIBOM. By altering the information in the meta-catalogs, it is possible to assess the system's resilience, sensitivity, and adaptive capabilities. These experiments would yield measurable insights into the robustness of cognitive workflows when faced with changes in component-level descriptors.
+
+A second key direction focuses on \textbf{knowledge subtraction scenarios}. This line of inquiry aims to analyze how the removal or degradation of structured or unstructured knowledge affects the system's behavior. Future investigations could explore the effects of excluding specific nodes, metadata fields, or knowledge base entries from the meta-model, assessing whether the system can compensate for the missing information.
+
+
+
+
+\section{Conclusion} \label{sec:conclusion}
+This thesis introduced a two-fold framework that addresses critical gaps in the literature and industry in the domain of multi-agent AI systems. By combining the Reflection architectural pattern with the concept of the AI Bill of Materials, it has been demonstrated how cognitive workflows can achieve enhanced reliability, portability, and maintainability. The convergence of regulatory requirements,  emerging business demands, and existing research gaps offers a timely opportunity for implementing solutions such as the one proposed in this study. As artificial intelligence becomes more integral to critical infrastructure and decision-making processes, robust governance mechanisms become indispensable. 
+
+In conclusion, this research, situated at the intersection of software engineering and AI engineering, offers both theoretical foundations and practical insights for addressing the growing complexity of modern artificial intelligence systems. Looking ahead, the effectiveness of future multi-agent architectures will depend not only on their technical capabilities but also on their traceability, adaptability, and accountability. The presented framework marks a step toward this vision, fostering the development of more trustworthy and resilient AI solutions. As the field continues to mature, such approaches will be essential for securing public trust and ensuring the reliable integration of AI into high-stakes domains.
+
+
