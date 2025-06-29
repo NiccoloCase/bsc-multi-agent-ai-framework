@@ -168,9 +168,8 @@ This process improves the system's **resilience** to breaking changes. For examp
 ### Workflow Synthesis
 
 When no existing workflow can satisfy a user's intent, the framework is designed to support synthesizing new workflows from scratch using metadata stored in the Knowledge Layer. This metadata is similar in spirit to SBOM (Software Bill of Materials) and AIBOM (AI Bill of Materials) and includes:
-- Functional descriptions
-- Latency/certification constraints
-- Structured + unstructured metadata
+- Qualitative and quantitative descriptions
+- Structured and unstructured metadata
 
 These properties are embedded into a **Hybrid Search** index that enables the system to:
 - Retrieve compatible components via semantic + keyword search
@@ -188,22 +187,59 @@ Once synthesized, workflows could be:
 This architectural approach highlights the potential flexibility and autonomy of the system while acknowledging that formal workflow synthesis remains an open research problem and a key area for future development.
 
 
-
+---
 
 ## Case Study: AI4NE / NE4AI
 
-A practical demonstration shows cognitive workflow routing of AI tasks based on:
+This experiment validates our cognitive routing system in a distributed network engineering context. It showcases both AI for Networking (AI4NE) and Networking for AI (NE4AI):
 
-* User intent analysis
-* Network and hardware constraints
-* Real-time model selection from AIBOM
-* Regulatory and security checks
+### Problem Overview
 
-Demonstrated benefits:
+Modern networks involve heterogeneous hardware and dynamic conditions. Our system leverages LLMs for intent-based routing and zero-touch configuration, integrating new nodes via natural language specs and manuals.
 
-* Increased traceability and transparency
-* Runtime fault tolerance and adaptability
-* Compliance with AI governance mandates
+### Workflow Design
+
+The workflow follows a 5-step decomposition:
+
+1. **Intent & Requirement Extraction** (LLM)
+2. **Hardware Discovery** (Tool/API)
+3. **Hardware Selection** (LLM, manual-based)
+4. **Routing Computation** (Tool, using Dijkstra/KSP)
+5. **Route Finalization** (LLM)
+
+This hybrid model decouples hardware and topology concerns, balancing explainability and performance.
+
+### Evaluated Approaches
+
+* **Simple LLM**: All logic handled by one LLM with all data in-context.
+* **Reasoning LLM**: Chain-of-Thought (CoT) reasoning added for better traceability.
+* **Function Calling**: LLM invokes external tools via APIs for dynamic data.
+* **Cognitive Workflow**: Structured multi-agent pipeline (Chain-of-Agents).
+
+### Results Summary
+
+In a 5-node SDN prototype with two AI-capable devices, diverse workloads (e.g. 5G routing, signal processing, AI training) were routed using each approach.
+
+
+![Figure](./supplementary-materials/AI4NE%3ANE4AI%20experiment/plots/1a.png)
+*<small>Performance and reliability comparison of the four approaches under a 5G network routing scenario involving AI-enhanced signal processing.</small>*
+
+
+
+
+![Figure](./supplementary-materials/AI4NE%3ANE4AI%20experiment/plots/1b.png)
+*<small>Performance and reliability comparison of the four approaches processing a complex network configuration scenario that requires aggregating multiple specifications and performing throughput calculations.</small>*
+
+
+
+
+
+![Figure](./supplementary-materials/AI4NE%3ANE4AI%20experiment/plots/1c.png)
+*<small>Execution time breakdown of a Cognitive Workflow, detailing phases including intent detection, input mapping, and subsequent processing steps.</small>*
+
+
+These results validate the feasibility of cognitive task routing in SDN environments with heterogeneous AI requirements.
+
 
 ---
 
