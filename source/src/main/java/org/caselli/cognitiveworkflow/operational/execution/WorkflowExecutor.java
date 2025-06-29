@@ -3,7 +3,7 @@ package org.caselli.cognitiveworkflow.operational.execution;
 import org.caselli.cognitiveworkflow.knowledge.MOP.WorkflowMetamodelService;
 import org.caselli.cognitiveworkflow.knowledge.model.node.port.Port;
 import org.caselli.cognitiveworkflow.knowledge.model.workflow.WorkflowEdge;
-import org.caselli.cognitiveworkflow.operational.LLM.services.PortAdapterService;
+import org.caselli.cognitiveworkflow.operational.AI.services.PortAdapterService;
 import org.caselli.cognitiveworkflow.operational.instances.NodeInstance;
 import org.caselli.cognitiveworkflow.operational.instances.WorkflowInstance;
 import org.caselli.cognitiveworkflow.operational.observability.WorkflowObservabilityReport;
@@ -205,10 +205,6 @@ public class WorkflowExecutor {
                     executionRecord.getMetrics().getSuccessfulNodes(),
                     executionRecord.getMetrics().getFailedNodes());
             logger.info("-------------------------------------------");
-
-
-            System.out.println(executionRecord.toJson()); // TODO: remove
-
 
             return executionRecord;
 
