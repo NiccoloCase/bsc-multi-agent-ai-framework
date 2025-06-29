@@ -1,0 +1,115 @@
+[{
+  "_id": "473bb66f-844b-4344-a621-621277d75062",
+  "nodes": [
+    {
+      "_id": "1",
+      "nodeMetamodelId": "33335fd5-dfa8-4f05-973d-7c6eb8ea7f1c",
+      "version": {
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      }
+    },
+    {
+      "_id": "2",
+      "nodeMetamodelId": "f774fe24-b0a2-43d9-8657-dbdcfb511cac",
+      "version": {
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      }
+    },
+    {
+      "_id": "3",
+      "nodeMetamodelId": "4db14566-916f-4d25-b1f0-52ab79b05b8f",
+      "version": {
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      }
+    },
+    {
+      "_id": "4",
+      "nodeMetamodelId": "c03debf8-593c-4804-b288-5580e9469274",
+      "version": {
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      }
+    },
+    {
+      "_id": "5",
+      "nodeMetamodelId": "c331de2d-9f8a-4129-af7b-3936c0351e1d",
+      "version": {
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "_id": "gateway-to-devices",
+      "sourceNodeId": "1",
+      "targetNodeId": "2"
+    },
+    {
+      "_id": "devices-to-llm1",
+      "sourceNodeId": "2",
+      "targetNodeId": "3"
+    },
+    {
+      "_id": "gateway-to-llm1",
+      "sourceNodeId": "1",
+      "targetNodeId": "3"
+    },
+    {
+      "_id": "llm1-to-route",
+      "sourceNodeId": "3",
+      "targetNodeId": "4",
+      "bindings": {
+        "output.device_ids": "device_ids"
+      }
+    },
+    {
+      "_id": "route-to-llm2",
+      "sourceNodeId": "4",
+      "targetNodeId": "5",
+      "bindings": {
+        "result.paths": "paths",
+        "result.network_topology": "topology"
+      }
+    },
+    {
+      "_id": "gateway-to-llm2",
+      "sourceNodeId": "1",
+      "targetNodeId": "5"
+    },
+    {
+      "_id": "devices-to-llm2",
+      "sourceNodeId": "2",
+      "targetNodeId": "5"
+    }
+  ],
+  "handledIntents": [
+    {
+      "intentId": "f9734b63-dfd9-4f34-9d43-21b92d16c1f8",
+      "score": 1
+    }
+  ],
+  "name": "AI4NE / NE4AI - ROUTE USER REQUEST",
+  "description": "Route user tasks across different nodes (or cloud resources) according to user ``intent'' and hardware availability,  relying on specialized AI modules to optimize networking decisions",
+  "enabled": true,
+  "version": {
+    "major": 1,
+    "minor": 1,
+    "patch": 0
+  },
+  "createdAt": {
+    "$date": "2025-05-31T12:50:32.172Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-31T12:50:32.213Z"
+  },
+  "_class": "org.caselli.cognitiveworkflow.knowledge.model.workflow.WorkflowMetamodel"
+}]
