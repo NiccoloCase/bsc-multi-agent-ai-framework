@@ -212,7 +212,7 @@ This hybrid model decouples hardware and topology concerns, balancing explainabi
 ### Evaluated Approaches
 
 * **Simple LLM**: All logic handled by one LLM with all data in-context.
-* **Reasoning LLM**: Chain-of-Thought (CoT) reasoning added for better traceability.
+* **Reasoning LLM**: LLM instructed for Chain-of-Thought (CoT) reasoning.
 * **Function Calling**: LLM invokes external tools via APIs for dynamic data.
 * **Cognitive Workflow**: Structured multi-agent pipeline (Chain-of-Agents).
 
