@@ -221,20 +221,20 @@ This hybrid model decouples hardware and topology concerns, balancing explainabi
 In a 5-node SDN prototype with two AI-capable devices, diverse workloads (e.g. 5G routing, signal processing, AI training) were routed using each approach.
 
 
-![Figure](./supplementary-materials/AI4NE-ANE4AI-experiment/plots/1a.png)
+![Figure](./supplementary-materials/AI4NE-NE4AI-experiment/plots/1a.png)
 *<small>Performance and reliability comparison of the four approaches under a 5G network routing scenario involving AI-enhanced signal processing.</small>*
 
 
 
 
-![Figure](./supplementary-materials/AI4NE-ANE4AI-experiment/plots/1b.png)
+![Figure](./supplementary-materials/AI4NE-NE4AI-experiment/plots/1b.png)
 *<small>Performance and reliability comparison of the four approaches processing a complex network configuration scenario that requires aggregating multiple specifications and performing throughput calculations.</small>*
 
 
 
 
 
-![Figure](./supplementary-materials/AI4NE-ANE4AI-experiment/plots/1c.png)
+![Figure](./supplementary-materials/AI4NE-NE4AI-experiment/plots/1c.png)
 *<small>Execution time breakdown of a Cognitive Workflow, detailing phases including intent detection, input mapping, and subsequent processing steps.</small>*
 
 
