@@ -62,13 +62,13 @@ To evaluate both performance and system adaptability, multiple models and provid
 \section*{Testing Summary}
 
 
-The testing strategy covered unit, integration, and end-to-end tests, validating system correctness and robustness across 104 test cases:
+The testing strategy covered unit, integration, and end-to-end tests, validating system correctness and robustness across 111 test cases:
 
 
 \begin{itemize}[leftmargin=*, label=--]
-    \item \textbf{Unit testing} involved 48 tests designed to verify the functionality of isolated components, such as metamodel validators and domain model methods.
+    \item \textbf{Unit testing} involved 51 tests designed to verify the functionality of isolated components, such as domain model methods.
     
-    \item \textbf{Integration testing} included 54 tests that evaluated the interactions between components and services. LLM-based services were tested on real-world tasks spanning a wide range of scenarios, from simple to complex. Furthermore, the tests covered nodes that interact with external systems, such as database nodes and RESTful services, the latter simulated using WireMock\footnote{WireMock is an open-source tool for mocking HTTP-based APIs. See \url{https://wiremock.org}}.
+    \item \textbf{Integration testing} included 58 tests that evaluated the interactions between components and services. LLM-based services were tested on real-world tasks spanning a wide range of scenarios, from simple to complex. Furthermore, the tests covered nodes that interact with external systems, such as database nodes and RESTful services, the latter simulated using WireMock\footnote{WireMock is an open-source tool for mocking HTTP-based APIs. See \url{https://wiremock.org}}.
     
     \item \textbf{End-to-end testing} involved two comprehensive tests simulating full workflow execution and adaptation in a production-like environment. These tests covered the entire process—from intent recognition to response generation—within the RAG scenario depicted in Figure~\ref{fig:RAG-workflow}.
 \end{itemize}

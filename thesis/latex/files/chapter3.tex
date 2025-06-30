@@ -74,7 +74,7 @@ Additionally, this hybrid design, involving early candidate discovery followed b
 
 
 \subsection{Comparative Implementation Approaches}
-Regarding the Function Calling approach, all services utilized in the workflow definition, as well as an additional endpoint for retrieving network topology, were made available to the model through the Spring AI function calling implementation.
+Regarding the Function Calling approach, all services utilized in the workflow definition were made available to the model through the Spring AI function calling implementation.
 
 In contrast, for the simple LLM approach, the devices and network information were retrieved prior to the LLM invocation, and the system prompt was augmented with all the necessary information to process the request. The routing service was not used in this configuration; therefore, routing became the sole responsibility of the LLM through a direct analysis of the topology structure.
 
@@ -186,5 +186,5 @@ Several important insights and future considerations were revealed during the ev
 
 
 \subsection{Conclusion}
-This feasibility study demonstrates that LLMs when embedded within cognitive workflow architectures, can support complex decision-making processes—while also exposing significant limitations. Although the networking scenario served as a valuable practical demonstration, it is not intended as a comprehensive exploration of the domain. Nonetheless, these initial findings encourage deeper investigation  on LLM-based cognitive systems in both AI for Network Engineering (AI4NE) and Network Engineering for AI (NE4AI) contexts.
+This feasibility study demonstrates that LLMs, when embedded within cognitive workflow architectures, can support complex decision-making processes, while also exposing significant limitations. Although the networking scenario served as a valuable practical demonstration, it is not intended as a comprehensive exploration of the domain. Nonetheless, these initial findings encourage deeper investigation into LLM-based cognitive systems in both AI for Networking (AI4NE) and Networking for AI (NE4AI) contexts.
 
