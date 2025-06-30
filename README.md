@@ -256,11 +256,12 @@ These results validate the feasibility of cognitive task routing in SDN environm
 
 ## Testing Summary
 
-* **104 tests total**:
+* **111 tests total**:
 
-  * **48 Unit Tests**
-  * **54 Integration Tests**
-  * **2 End-to-End Tests**
+  * **51 Unit Tests**: designed to verify the functionality of isolated components, such as domain model methods.
+  * **52 Integration Tests**: designed to verify the interaction with external systems,
+such as LLMs, database nodes and RESTful services.
+  * **2 End-to-End Tests**: designed to simulate full workflow execution and adaptation in a production-like environment
 
 ---
 
