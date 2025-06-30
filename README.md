@@ -258,14 +258,14 @@ These results validate the feasibility of cognitive task routing in SDN environm
 
 * **104 tests total**:
 
-  * **48 Unit Tests**: Model validation, port logic.
-  * **54 Integration Tests**: LLM calls, schema conversion, DB access.
-  * **2 End-to-End Tests**: RAG workflows and adaptations.
+  * **48 Unit Tests**
+  * **54 Integration Tests**
+  * **2 End-to-End Tests**
 
 ---
 
 
----
+
 
 ## How to Run
 
