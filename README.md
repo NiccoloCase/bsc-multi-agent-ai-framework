@@ -18,7 +18,7 @@
 
 ## Abstract
 
-The increasing complexity of modern AI systems—especially those based on large language models (LLMs) and multi-agent architectures—demands new methodologies to ensure system-level reliability, traceability, and adaptability. Existing tools offer limited visibility into software and knowledge dependencies, leaving a gap in accountable and maintainable cognitive workflows. This thesis addresses that gap by proposing a two-fold framework combining the Reflection architectural pattern with an extended notion of the Software Bill of Materials (SBOM), adapted for AI systems as the Artificial Intelligence Bill of Materials (AIBOM). This novel integration—largely unexplored in current literature—enables runtime adaptability and structured traceability. The architecture features a knowledge layer managing workflow meta-models and an operational layer for task execution. Reflection supports semantic interoperability across heterogeneous components whose interactions are not predefined. A use case in AI for Network Engineering (AI4NE) and Network Engineering for AI (NE4AI) demonstrates how cognitive workflows dynamically route requests across cloud resources based on evolving constraints (e.g., latency, energy efficiency, and computational cost). This work opens several research directions and lays the groundwork for further investigation into structured multi-agent architectures and their alignment with forthcoming AI governance regulations.
+The increasing complexity of modern AI systems—especially those based on large language models (LLMs) and multi-agent architectures—demands new methodologies to ensure system-level reliability, traceability, and adaptability. Existing tools offer limited visibility into software and knowledge dependencies, leaving a gap in accountable and maintainable cognitive workflows. This thesis addresses that gap by proposing a two-fold framework combining the Reflection architectural pattern with an extended notion of the Software Bill of Materials (SBOM), adapted for AI systems as the Artificial Intelligence Bill of Materials (AIBOM). This novel integration—largely unexplored in current literature—enables runtime adaptability and structured traceability. The architecture features a knowledge layer managing workflow meta-models and an operational layer for task execution. Reflection supports semantic interoperability across heterogeneous components whose interactions are not predefined. A use case in AI for Networking (AI4NE) and Networking for AI (NE4AI) demonstrates how cognitive workflows dynamically route requests across cloud resources based on evolving constraints (e.g., latency, energy efficiency, and computational cost). This work opens several research directions and lays the groundwork for further investigation into structured multi-agent architectures and their alignment with forthcoming AI governance regulations.
 
 
 
@@ -221,20 +221,20 @@ This hybrid model decouples hardware and topology concerns, balancing explainabi
 In a 5-node SDN prototype with two AI-capable devices, diverse workloads (e.g. 5G routing, signal processing, AI training) were routed using each approach.
 
 
-![Figure](./supplementary-materials/AI4NE%3ANE4AI%20experiment/plots/1a.png)
+![Figure](./supplementary-materials/AI4NE-ANE4AI-experiment/plots/1a.png)
 *<small>Performance and reliability comparison of the four approaches under a 5G network routing scenario involving AI-enhanced signal processing.</small>*
 
 
 
 
-![Figure](./supplementary-materials/AI4NE%3ANE4AI%20experiment/plots/1b.png)
+![Figure](./supplementary-materials/AI4NE-ANE4AI-experiment/plots/1b.png)
 *<small>Performance and reliability comparison of the four approaches processing a complex network configuration scenario that requires aggregating multiple specifications and performing throughput calculations.</small>*
 
 
 
 
 
-![Figure](./supplementary-materials/AI4NE%3ANE4AI%20experiment/plots/1c.png)
+![Figure](./supplementary-materials/AI4NE-ANE4AI-experiment/plots/1c.png)
 *<small>Execution time breakdown of a Cognitive Workflow, detailing phases including intent detection, input mapping, and subsequent processing steps.</small>*
 
 
