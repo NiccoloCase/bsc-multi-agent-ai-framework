@@ -1,0 +1,39 @@
+{
+  "topology": {
+    "nodes": [
+      { "id": "1", "start": true, "label": "Client" },
+      { "id": "2", "label": "Gateway Router" },
+
+      { "id": "3", "device_id": "6837064848c80fea44a5f4c6", "label": "Intel ACC100 - vRAN" },
+      { "id": "4", "device_id": "6837064848c80fea44a5f4c5", "label": "Snapdragon X75 - 5G Modem" },
+      { "id": "5", "device_id": "6837064848c80fea44a5f4c7", "label": "Marvell OCTEON 10 - Edge DPU" },
+
+      { "id": "6", "label": "Core Switch" },
+
+      { "id": "7", "device_id": "6837064848c80fea44a5f4c9", "label": "Jetson Orin NX - AI Node" },
+      { "id": "8", "device_id": "6837064848c80fea44a5f4c8", "label": "BlueField-3 - DPU" },
+      { "id": "9", "device_id": "6837064848c80fea44a5f4c4", "label": "Napatech IPU - SmartNIC" },
+
+      { "id": "10", "end": true, "label": "Logging & Control Sink" }
+    ],
+    "connections": [
+      { "source": "1", "target": "2" },
+
+      { "source": "2", "target": "3" },
+      { "source": "2", "target": "4" },
+      { "source": "2", "target": "5" },
+
+      { "source": "3", "target": "6" },
+      { "source": "4", "target": "6" },
+      { "source": "5", "target": "6" },
+
+      { "source": "6", "target": "7" },
+      { "source": "6", "target": "8" },
+      { "source": "6", "target": "9" },
+
+      { "source": "7", "target": "10" },
+      { "source": "8", "target": "10" },
+      { "source": "9", "target": "10" }
+    ]
+  }
+}

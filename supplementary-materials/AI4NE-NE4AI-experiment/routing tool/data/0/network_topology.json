@@ -1,0 +1,48 @@
+{
+  "topology": {
+    "nodes": [
+      {
+        "id": "1",
+        "start": true
+      },
+      {
+        "id": "2",
+        "device_id": "6837064848c80fea44a5f4c8"
+      },
+      {
+        "id": "3",
+        "device_id": "6837064848c80fea44a5f4c5"
+      },
+      {
+        "id": "4",
+        "end": true
+      }
+    ],
+    "connections": [
+        {
+            "source": "1",
+            "target": "2"
+        },
+       {
+            "source": "1",
+            "target": "3"
+        },
+        {
+            "source": "2",
+            "target": "4"
+        },
+        {
+            "source": "3",
+            "target": "4"
+        },
+        {
+            "source": "2",
+            "target": "3"
+        },
+       {
+            "source": "3",
+            "target": "2"
+        }
+    ]
+  }
+}
